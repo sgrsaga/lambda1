@@ -37,16 +37,16 @@ def lambda_handler(event, context):
 
     #dynamodb = boto3.resources('dynamodb')
     #dynamoTable = dynamodb.Table('audit')
-    date1 = event["date"]
-    user_id1 = event["user_id"]
+    userid = event["user_id"]
+    username = event["user_name"]
 
     response = client.put_item( TableName = 'audit', 
     Item={
-        "date": {
-            'N': date1
-        }, 
         "user_id": {
-            'S': user_id1
+            'N': userid
+        }, 
+        "user_name": {
+            'S': username
         }        
         })
     
