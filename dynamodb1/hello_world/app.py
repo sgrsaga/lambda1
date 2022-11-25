@@ -37,9 +37,10 @@ def lambda_handler(event, context):
 
     #dynamodb = boto3.resources('dynamodb')
     #dynamoTable = dynamodb.Table('audit')
-    userid = event['user_id']
-    username = event['user_name']
+    userid = event['queryStringParameters']['user_id']
+    username = event['queryStringParameters']['user_name']
     
+    ## Print Input
     print(str(userid))
     print(str(username))
 
@@ -56,17 +57,14 @@ def lambda_handler(event, context):
     
     print(str(data['Item']))
     
-    response = {
-    'statusCode': 200,
-    'body': data['Item'],
-    'headers': {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
-    }
-    
+    # Set the response
+    res_body = {}
+    res_body['statusCode'] = 200
+    res_body['headers'] = {}
+    res_body['headers']['Content-Type'] = 'application/json'
+    res_body['body'] = json.dumps(data)
 
-    return response
+    return res_body
 
     '''
     return {
