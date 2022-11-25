@@ -39,6 +39,9 @@ def lambda_handler(event, context):
     #dynamoTable = dynamodb.Table('audit')
     userid = event["user_id"]
     username = event["user_name"]
+    
+    print(str(userid))
+    print(str(username))
 
     response = client.put_item( TableName = 'audit', 
     Item={
