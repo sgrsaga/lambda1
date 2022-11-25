@@ -37,8 +37,8 @@ def lambda_handler(event, context):
 
     #dynamodb = boto3.resources('dynamodb')
     #dynamoTable = dynamodb.Table('audit')
-    userid = event["user_id"]
-    username = event["user_name"]
+    userid = event['user_id']
+    username = event['user_name']
     
     print(str(userid))
     print(str(username))
