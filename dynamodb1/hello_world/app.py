@@ -55,7 +55,7 @@ def lambda_handler(event, context):
     )
     
     response = {
-    'statusCode': 200,
+    'statusCode': 201,
     'body': data,
     'headers': {
         'Content-Type': 'application/json',
