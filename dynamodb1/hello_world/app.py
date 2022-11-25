@@ -43,8 +43,8 @@ def lambda_handler(event, context):
     print(str(userid))
     print(str(username))
 
-    data = client.put_item( TableName = 'audit', 
-    Item={
+    data = client.get_item( TableName = 'audit', 
+    Key={
         "user_id": {
             'N': userid
         }, 
@@ -54,9 +54,11 @@ def lambda_handler(event, context):
         }
     )
     
+    print(str(data['Item']))
+    
     response = {
-    'statusCode': 201,
-    'body': data,
+    'statusCode': 200,
+    'body': data['Item'],
     'headers': {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
