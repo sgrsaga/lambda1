@@ -33,13 +33,25 @@ def lambda_handler(event, context):
 
     #     raise e
 
-    dynamodb = boto3.resources('dynamodb')
-    dynamoTable = dynamodb.Table('audit')
+    client = boto3.client('dynamodb')
+
+    #dynamodb = boto3.resources('dynamodb')
+    #dynamoTable = dynamodb.Table('audit')
     date = event["1669310839"]
     user_id = event["sgr3"]
 
-    response = dynamoTable.put_item(item={"date": date, "user_id": user_id})
+    response = client.put_item( TableName = 'audit', 
+    item={
+        "date": {
+            'N': date
+        }, 
+        "user_id": {
+            'S': user_id
+        }        
+        })
     
+    
+
     return response
 
     '''
