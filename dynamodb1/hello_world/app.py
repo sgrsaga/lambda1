@@ -56,9 +56,9 @@ def lambda_handler(event, context):
         }        
         }
     )
-    data['memory_limit'] = context.memoryLimitMB
-    data['function_name'] = context.functionName
-    data['RemainingTime'] = context.getRemainingTimeInMillis
+    data['full_context'] = context
+    #data['function_name'] = context.functionName
+    #data['RemainingTime'] = context.getRemainingTimeInMillis
     
     
     print(str(data))
