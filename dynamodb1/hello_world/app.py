@@ -1,5 +1,5 @@
 import json
-
+import boto3
 # import requests
 
 
@@ -33,6 +33,16 @@ def lambda_handler(event, context):
 
     #     raise e
 
+    dynamodb = boto3.resources('dynamodb')
+    dynamoTable = dynamodb.Table('audit')
+    date = event["1669310839"]
+    user_id = event["sgr3"]
+
+    response = dynamoTable.put_item(item={"date": date, "user_id": user_id})
+    
+    return response
+
+    '''
     return {
         "statusCode": 200,
         "body": json.dumps({
@@ -40,3 +50,4 @@ def lambda_handler(event, context):
             # "location": ip.text.replace("\n", "")
         }),
     }
+    '''
