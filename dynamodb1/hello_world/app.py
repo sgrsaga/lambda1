@@ -56,7 +56,7 @@ def lambda_handler(event, context):
         }        
         }
     )
-    data['full_context'] = context
+    data['full_context'] = str(context)
     #data['function_name'] = context.functionName
     #data['RemainingTime'] = context.getRemainingTimeInMillis
     
