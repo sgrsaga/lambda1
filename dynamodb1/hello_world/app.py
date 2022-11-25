@@ -43,8 +43,10 @@ def lambda_handler(event, context):
     ## Print Input
     print(str(userid))
     print(str(username))
+    
+    data = {}
 
-    data = client.get_item( TableName = 'audit', 
+    data['dynamodb_outcome'] = client.get_item( TableName = 'audit', 
     Key={
         "user_id": {
             'N': userid
@@ -54,8 +56,12 @@ def lambda_handler(event, context):
         }        
         }
     )
+    data['memory_limit'] = context.memoryLimitMB
+    data['function_name'] = context.functionName
+    data['RemainingTime'] = context.getRemainingTimeInMillis
     
-    print(str(data['Item']))
+    
+    print(str(data))
     
     # Set the response
     res_body = {}
