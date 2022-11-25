@@ -10,3 +10,15 @@ confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
 disable_rollback = true
 image_repositories = []
+
+[dev]
+[dev.deploy]
+[dev.deploy.parameters]
+stack_name = "dynamodb2"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-d06o9gxv9iqt"
+s3_prefix = "dynamodb2"
+region = "ap-south-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = []
